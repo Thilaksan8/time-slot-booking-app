@@ -1,11 +1,27 @@
-const express= require("express");
-const app = express();
-const PORT= 5000;
- 
-app.get("/",(req,res)=>{
-    res.send("Server is running 🚀");
-});
+    require("dotenv").config();
 
-app.listen(PORT,()=>{
-    console.log(`Server started on port ${{PORT}}`)
-})
+    const express= require("express");
+    const cors=require('cors');
+    const connectDB = require("./config/db");
+
+    const app = express();
+
+    connectDB();
+
+    app.use(cors());
+    app.use(express.json());
+    
+    const PORT= 5000;
+    
+    app.get("/",(req,res)=>{
+        res.send("Server is running 🚀");
+    });
+    app.post("/booking",(req,res)=>{
+        console.log(req.body);
+        res.json({
+            message:"Booking Received Successfully"
+        });
+    });
+    app.listen(PORT,()=>{
+        console.log(`Server started on port ${PORT}`)
+    })

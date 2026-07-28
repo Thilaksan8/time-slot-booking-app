@@ -9,12 +9,24 @@ function BookingForm() {
     const [note, setNote] = useState("");
 
     const handleSubmit = () => {
-        console.log(name);
-        console.log(date);
-        console.log(timeSlot);
-        console.log(category);
-        console.log(note);
-    }
+        fetch("http://localhost:5000/booking", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name,
+                date,
+                timeSlot,
+                category,
+                note
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        });
+    };
 
     return (
         <div>
