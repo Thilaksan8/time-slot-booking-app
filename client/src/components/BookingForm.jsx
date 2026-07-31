@@ -1,6 +1,9 @@
 import { useState } from "react";
 
+
 function BookingForm({fetchBookings}) {
+
+    const [message, setMessage] = useState("");
 
     const [name, setName] = useState("");
     const [date, setDate] = useState("");
@@ -22,10 +25,22 @@ function BookingForm({fetchBookings}) {
                 note
             })
         })
-        .then(response => response.json())
+        .then(async (response) => {
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message);
+            }
+
+            return data;
+        })
         .then(data => {
-            console.log(data);
+            setMessage(data.message);
             fetchBookings(); // Refresh the bookings after a successful submission
+        })
+        .catch((error) => {
+            setMessage(error.message);
         });
     };
 
@@ -33,6 +48,8 @@ function BookingForm({fetchBookings}) {
         <div>
 
             <h2>Book a Time Slot</h2>
+
+            {message && <p>{message}</p>}
 
             <input
                 type="text"
