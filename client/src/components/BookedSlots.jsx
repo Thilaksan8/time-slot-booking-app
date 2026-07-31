@@ -1,5 +1,24 @@
-function BookedSlots({bookings}) {
+function BookedSlots({bookings, fetchBookings}) {
     console.log(bookings);
+    const handleDelete = (id) => {
+
+        fetch(`http://localhost:5000/booking/${id}`, {
+            method: "DELETE"
+        })
+        .then((response) => response.json())
+        .then((data) => {
+
+            console.log(data);
+
+            fetchBookings();
+
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+
+    };
+
     return (
         <div>
             <h2>Booked Slots</h2>
@@ -13,6 +32,10 @@ function BookedSlots({bookings}) {
                     <p>⏰ {booking.timeSlot}</p>
 
                     <p>🏷 {booking.category}</p>
+
+                    <button onClick={() => handleDelete(booking._id)}>
+                        Delete
+                    </button>
 
                 </div>
             ))}

@@ -48,7 +48,7 @@ function Home() {
 
             <div className="right-panel">
 
-                <BookedSlots bookings={bookings} />
+                <BookedSlots bookings={bookings} fetchBookings={fetchBookings} />
 
             </div>
 
