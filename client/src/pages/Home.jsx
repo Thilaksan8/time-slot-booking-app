@@ -1,5 +1,4 @@
 import BookingForm from "../components/BookingForm";
-import AvailableSlots from "../components/AvailableSlots";
 import BookedSlots from "../components/BookedSlots";
 import { useEffect, useState } from "react";
 
@@ -29,17 +28,34 @@ function Home() {
 
 
     return (
-        <>
-            <h1>Time Slot Booking</h1>
-            <p>Book your appointment easily.</p>
+    <div className="container">
 
-            <BookingForm fetchBookings={fetchBookings} />
+        <h1>📅 Time Slot Booking</h1>
+        <p>Book your appointment easily.</p>
 
-            <AvailableSlots />
+        <div className="content">
 
-            <BookedSlots bookings={bookings} />
-        </>
-    );
+            <div className="left-panel">
+
+                <BookingForm
+                    fetchBookings={fetchBookings}
+                    bookings={bookings}
+                />
+
+               
+
+            </div>
+
+            <div className="right-panel">
+
+                <BookedSlots bookings={bookings} />
+
+            </div>
+
+        </div>
+
+    </div>
+);
 }
 
 export default Home;

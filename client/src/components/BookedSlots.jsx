@@ -4,12 +4,16 @@ function BookedSlots({bookings}) {
         <div>
             <h2>Booked Slots</h2>
             {bookings.map((booking) => (
-                <div key={booking._id}>
-                    <p><strong>Name:</strong>{booking.name}</p>    
-                    <p><strong>Date:</strong>{booking.date}</p>
-                    <p><strong>Time:</strong>{booking.time}</p>
-                    
-                    <hr/> 
+                <div className="booking-card" key={booking._id}>
+
+                    <p>👤 <strong>{booking.name}</strong></p>
+
+                    <p>📅 {booking.date}</p>
+
+                    <p>⏰ {booking.timeSlot}</p>
+
+                    <p>🏷 {booking.category}</p>
+
                 </div>
             ))}
         </div>

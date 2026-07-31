@@ -1,7 +1,14 @@
 import { useState } from "react";
 
+const timeSlots = [
+    "9:00 - 9:30 AM",
+    "9:30 - 10:00 AM",
+    "10:00 - 10:30 AM",
+    "11:00 - 11:30 AM"
+];
 
-function BookingForm({fetchBookings}) {
+
+function BookingForm({fetchBookings,bookings}) {
 
     const [message, setMessage] = useState("");
 
@@ -49,7 +56,11 @@ function BookingForm({fetchBookings}) {
 
             <h2>Book a Time Slot</h2>
 
-            {message && <p>{message}</p>}
+            {message && (
+                <div className="message">
+                    {message}
+            </div>
+            )}
 
             <input
                 type="text"
@@ -69,10 +80,25 @@ function BookingForm({fetchBookings}) {
                 onChange={(e) => setTimeSlot(e.target.value)}
             >
                 <option value="">Select a time slot</option>
-                <option >9:00 - 9:30 AM</option>
-                <option >9:30 - 10:00 AM</option>
-                <option >10:00 - 10:30 AM</option>
-                <option >11:00 - 11:30 AM</option>
+                {timeSlots.map((slot) => {
+
+                    const isBooked = bookings.some(
+                        (booking) =>
+                            booking.date === date &&
+                            booking.timeSlot === slot
+            );
+
+            return (
+                <option 
+                    key={slot} 
+                    value={slot} 
+                    disabled={isBooked}
+                >
+                    {isBooked ? `${slot} (Booked)` : slot}
+                </option>
+    );
+
+})}
             </select>
             <br/>
             <select

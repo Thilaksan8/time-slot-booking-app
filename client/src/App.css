@@ -1,0 +1,90 @@
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.container > p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.content {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.left-panel,
+.right-panel {
+    flex: 1;
+}
+
+.left-panel,
+.right-panel {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.left-panel input,
+.left-panel select,
+.left-panel textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.left-panel button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.left-panel button:hover {
+    background-color: #1d4ed8;
+}
+
+.booking-card {
+    background-color: #f8fafc;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.booking-card {
+    text-align: left;
+}
+
+.booking-card p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.message {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+}
