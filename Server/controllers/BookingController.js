@@ -4,6 +4,17 @@ const createBooking = async (req, res) => {
 
     try {
         console.log("Request received:", req.body);
+        const { date, timeSlot } = req.body;
+        const existingBooking = await Booking.findOne({
+            date,
+            timeSlot
+        });
+
+        if (existingBooking) {
+            return res.status(400).json({
+                message: "This time slot is already booked."
+            });
+        }
         const booking = await Booking.create(req.body);
 
         res.status(201).json({
