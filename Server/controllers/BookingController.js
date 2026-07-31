@@ -3,7 +3,7 @@ const Booking = require("../models/Booking");
 const createBooking = async (req, res) => {
 
     try {
-
+        console.log("Request received:", req.body);
         const booking = await Booking.create(req.body);
 
         res.status(201).json({
