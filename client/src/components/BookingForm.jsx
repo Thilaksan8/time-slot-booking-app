@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function BookingForm() {
+function BookingForm({fetchBookings}) {
 
     const [name, setName] = useState("");
     const [date, setDate] = useState("");
@@ -25,6 +25,7 @@ function BookingForm() {
         .then(response => response.json())
         .then(data => {
             console.log(data);
+            fetchBookings(); // Refresh the bookings after a successful submission
         });
     };
 

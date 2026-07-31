@@ -8,7 +8,7 @@ function BookedSlots({bookings}) {
                     <p><strong>Name:</strong>{booking.name}</p>    
                     <p><strong>Date:</strong>{booking.date}</p>
                     <p><strong>Time:</strong>{booking.time}</p>
-                    <p><strong>Email:</strong>{booking.email}</p>
+                    
                     <hr/> 
                 </div>
             ))}
