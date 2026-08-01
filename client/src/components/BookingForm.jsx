@@ -35,8 +35,8 @@ function BookingForm({fetchBookings,bookings,editingBooking,setEditingBooking}) 
     const handleSubmit = () => {
 
         const url = editingBooking
-            ? `http://localhost:5000/booking/${editingBooking._id}`
-            : "http://localhost:5000/booking";
+            ? `https://time-slot-booking-api.onrender.com/${editingBooking._id}`
+            : "https://time-slot-booking-api.onrender.com/booking";
 
         const method = editingBooking ? "PUT" : "POST";
         fetch(url, {

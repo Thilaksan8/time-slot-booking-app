@@ -91,5 +91,5 @@ npm run dev
 
 ## 👨‍💻 Author
 
-**Thilak San**
+**ThilakSan**
 University of Moratuwa

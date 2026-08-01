@@ -14,7 +14,7 @@ function Home() {
 
     const fetchBookings = () => {
 
-    fetch("http://localhost:5000/booking")
+    fetch("https://time-slot-booking-api.onrender.com")
         .then((response) => response.json())
         .then((data) => {
             setBookings(data);
