@@ -14,7 +14,7 @@ function Home() {
 
     const fetchBookings = () => {
 
-    fetch("https://time-slot-booking-api.onrender.com")
+    fetch("https://time-slot-booking-api.onrender.com/booking")
         .then((response) => response.json())
         .then((data) => {
             setBookings(data);

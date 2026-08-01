@@ -2,7 +2,7 @@ function BookedSlots({bookings, fetchBookings,setEditingBooking}) {
     console.log(bookings);
     const handleDelete = (id) => {
 
-        fetch(`https://time-slot-booking-api.onrender.com/${id}`, {
+        fetch(`https://time-slot-booking-api.onrender.com/booking/${id}`, {
             method: "DELETE"
         })
         .then((response) => response.json())
