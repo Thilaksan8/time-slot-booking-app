@@ -2,7 +2,7 @@ import BookingForm from "../components/BookingForm";
 import BookedSlots from "../components/BookedSlots";
 import { useEffect, useState } from "react";
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL || "https://time-slot-booking-api.onrender.com";
 
 function Home() {
 

@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL || "https://time-slot-booking-api.onrender.com";
 
 const timeSlots = [
     "9:00 - 9:30 AM",

@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL || "https://time-slot-booking-api.onrender.com";
 
 function BookedSlots({bookings, fetchBookings,setEditingBooking}) {
     console.log(bookings);
