@@ -113,7 +113,8 @@ function BookingForm({fetchBookings,bookings,editingBooking,setEditingBooking}) 
                     const isBooked = bookings.some(
                         (booking) =>
                             booking.date === date &&
-                            booking.timeSlot === slot
+                            booking.timeSlot === slot &&
+                            (!editingBooking || booking._id !== editingBooking._id)
             );
 
             return (

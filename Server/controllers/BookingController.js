@@ -55,6 +55,19 @@ const updateBooking = async (req, res) => {
     try {
 
         const { id } = req.params;
+        const { date, timeSlot } = req.body;
+
+        const duplicate = await Booking.findOne({
+            date,
+            timeSlot,
+            _id: { $ne: id }
+        });
+
+        if (duplicate) {
+            return res.status(400).json({
+                message: "This time slot is already booked by someone else."
+            });
+        }
 
         const updatedBooking = await Booking.findByIdAndUpdate(
             id,

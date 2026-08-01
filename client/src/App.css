@@ -88,3 +88,9 @@
     text-align: center;
     font-weight: 600;
 }
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+}
