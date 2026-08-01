@@ -1,8 +1,10 @@
+const API_URL = import.meta.env.VITE_API_URL;
+
 function BookedSlots({bookings, fetchBookings,setEditingBooking}) {
     console.log(bookings);
     const handleDelete = (id) => {
 
-        fetch(`https://time-slot-booking-api.onrender.com/booking/${id}`, {
+        fetch(`${API_URL}/booking/${id}`, {
             method: "DELETE"
         })
         .then((response) => response.json())
@@ -32,6 +34,8 @@ function BookedSlots({bookings, fetchBookings,setEditingBooking}) {
                     <p>⏰ {booking.timeSlot}</p>
 
                     <p>🏷 {booking.category}</p>
+
+                    {booking.note && <p>📝 <em>{booking.note}</em></p>}
 
                     <div className="button-group">
 

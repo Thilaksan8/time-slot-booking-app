@@ -1,5 +1,7 @@
 import { useState,useEffect } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const timeSlots = [
     "9:00 - 9:30 AM",
     "9:30 - 10:00 AM",
@@ -35,8 +37,8 @@ function BookingForm({fetchBookings,bookings,editingBooking,setEditingBooking}) 
     const handleSubmit = () => {
 
         const url = editingBooking
-            ? `https://time-slot-booking-api.onrender.com/booking/${editingBooking._id}`
-            : "https://time-slot-booking-api.onrender.com/booking";
+            ? `${API_URL}/booking/${editingBooking._id}`
+            : `${API_URL}/booking`;
 
         const method = editingBooking ? "PUT" : "POST";
         fetch(url, {

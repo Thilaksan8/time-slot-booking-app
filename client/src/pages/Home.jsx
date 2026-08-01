@@ -2,7 +2,7 @@ import BookingForm from "../components/BookingForm";
 import BookedSlots from "../components/BookedSlots";
 import { useEffect, useState } from "react";
 
-
+const API_URL = import.meta.env.VITE_API_URL;
 
 function Home() {
 
@@ -14,7 +14,7 @@ function Home() {
 
     const fetchBookings = () => {
 
-    fetch("https://time-slot-booking-api.onrender.com/booking")
+    fetch(`${API_URL}/booking`)
         .then((response) => response.json())
         .then((data) => {
             setBookings(data);
