@@ -8,6 +8,8 @@ function Home() {
 
     const [bookings, setBookings] = useState([]);
 
+    const [editingBooking, setEditingBooking] = useState(null);
+
      
 
     const fetchBookings = () => {
@@ -40,6 +42,8 @@ function Home() {
                 <BookingForm
                     fetchBookings={fetchBookings}
                     bookings={bookings}
+                    editingBooking={editingBooking}
+                    setEditingBooking={setEditingBooking}
                 />
 
                
@@ -48,7 +52,11 @@ function Home() {
 
             <div className="right-panel">
 
-                <BookedSlots bookings={bookings} fetchBookings={fetchBookings} />
+                <BookedSlots
+                    bookings={bookings}
+                    fetchBookings={fetchBookings}
+                    setEditingBooking={setEditingBooking}
+                />
 
             </div>
 

@@ -1,4 +1,4 @@
-function BookedSlots({bookings, fetchBookings}) {
+function BookedSlots({bookings, fetchBookings,setEditingBooking}) {
     console.log(bookings);
     const handleDelete = (id) => {
 
@@ -33,9 +33,17 @@ function BookedSlots({bookings, fetchBookings}) {
 
                     <p>🏷 {booking.category}</p>
 
-                    <button onClick={() => handleDelete(booking._id)}>
-                        Delete
-                    </button>
+                    <div className="button-group">
+
+                        <button onClick={() => {console.log(booking) ; setEditingBooking(booking)}}>
+                            Edit
+                        </button>
+
+                        <button onClick={() => handleDelete(booking._id)}>
+                            Delete
+                        </button>
+
+                    </div>
 
                 </div>
             ))}

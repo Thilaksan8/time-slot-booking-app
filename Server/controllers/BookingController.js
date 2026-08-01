@@ -50,6 +50,33 @@ const getBookings = async (req, res) => {
 
 };
 
+const updateBooking = async (req, res) => {
+
+    try {
+
+        const { id } = req.params;
+
+        const updatedBooking = await Booking.findByIdAndUpdate(
+            id,
+            req.body,
+            { new: true }
+        );
+
+        res.status(200).json({
+            message: "Booking updated successfully.",
+            booking: updatedBooking
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+            message: error.message
+        });
+
+    }
+
+};      
+
 const deleteBooking = async (req, res) => {
 
     try {
@@ -75,5 +102,6 @@ const deleteBooking = async (req, res) => {
 module.exports = {
     createBooking,
     getBookings,
+    updateBooking,
     deleteBooking
 };  

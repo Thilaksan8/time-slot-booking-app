@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 const timeSlots = [
     "9:00 - 9:30 AM",
@@ -8,7 +8,7 @@ const timeSlots = [
 ];
 
 
-function BookingForm({fetchBookings,bookings}) {
+function BookingForm({fetchBookings,bookings,editingBooking,setEditingBooking}) {
 
     const [message, setMessage] = useState("");
 
@@ -18,9 +18,29 @@ function BookingForm({fetchBookings,bookings}) {
     const [category, setCategory] = useState("");
     const [note, setNote] = useState("");
 
+    useEffect(() => {
+
+        if (editingBooking) {
+
+            setName(editingBooking.name);
+            setDate(editingBooking.date);
+            setTimeSlot(editingBooking.timeSlot);
+            setCategory(editingBooking.category);
+            setNote(editingBooking.note);
+
+        }
+
+    }, [editingBooking]);
+
     const handleSubmit = () => {
-        fetch("http://localhost:5000/booking", {
-            method: "POST",
+
+        const url = editingBooking
+            ? `http://localhost:5000/booking/${editingBooking._id}`
+            : "http://localhost:5000/booking";
+
+        const method = editingBooking ? "PUT" : "POST";
+        fetch(url, {
+            method,
             headers: {
                 "Content-Type": "application/json"
             },
@@ -45,6 +65,12 @@ function BookingForm({fetchBookings,bookings}) {
         .then(data => {
             setMessage(data.message);
             fetchBookings(); // Refresh the bookings after a successful submission
+            setName("");
+            setDate("");
+            setTimeSlot("");
+            setCategory("");
+            setNote("");
+            setEditingBooking(null);
         })
         .catch((error) => {
             setMessage(error.message);
@@ -119,7 +145,7 @@ function BookingForm({fetchBookings,bookings}) {
                 onChange={(e) => setNote(e.target.value)}
             ></textarea>
             <br/>
-            <button onClick={handleSubmit}>Book Slot</button>
+            <button onClick={handleSubmit}>{editingBooking ? "Update Booking" : "Book Slot"}</button>
             
                 
         </div>
