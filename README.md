@@ -1,38 +1,43 @@
-# 📅 Time Slot Booking System
+# Time Slot Booking System
 
-A full-stack MERN application that allows users to book, update, and manage appointment time slots while preventing duplicate bookings. The application demonstrates complete CRUD operations, REST API development, MongoDB integration, and frontend-backend communication.
+A full-stack MERN application for managing time-slot appointments. The project allows users to create, view, update, and delete bookings while preventing duplicate reservations for the same slot.
 
----
-
-## 🌐 Live Demo
-
-**Frontend (Vercel):**
-> https://time-slot-booking-app-tau.vercel.app
-
-**Backend API (Render):**
-> https://time-slot-booking-api.onrender.com
+This project demonstrates a practical CRUD workflow, frontend-backend integration, API development, and MongoDB connectivity in a real-world booking use case.
 
 ---
 
-## 📌 Features
+## Live Demo
 
-- ✅ Create a new booking
-- ✅ View all booked appointments
-- ✅ Update existing bookings
-- ✅ Delete bookings
-- ✅ Prevent duplicate time-slot reservations
-- ✅ Automatically disable booked time slots
-- ✅ Display booking success and error messages
-- ✅ Responsive and clean user interface
+- Frontend: https://time-slot-booking-app-tau.vercel.app
+- Backend API: https://time-slot-booking-api.onrender.com
 
 ---
 
-## 🛠 Tech Stack
+## Project Overview
+
+The application is designed for appointment-based booking scenarios where users need to reserve available time slots without conflicts. It provides a clean interface for managing bookings and displays only valid available time slots to the end user.
+
+---
+
+## Key Features
+
+- Create new bookings
+- View all booked slots
+- Update existing bookings
+- Delete bookings
+- Prevent duplicate booking of the same time slot
+- Disable already reserved slots automatically
+- Responsive and simple UI for smooth interaction
+- Error handling for invalid requests and duplicate bookings
+
+---
+
+## Tech Stack
 
 ### Frontend
 - React
 - Vite
-- CSS3
+- CSS
 
 ### Backend
 - Node.js
@@ -43,62 +48,51 @@ A full-stack MERN application that allows users to book, update, and manage appo
 - Mongoose
 
 ### Deployment
-- Vercel (Frontend)
-- Render (Backend)
+- Vercel for frontend
+- Render for backend
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
-```
+```text
 time-slot-booking-app
-│
-├── client
-│   ├── public
-│   ├── src
-│   │   ├── components
-│   │   ├── pages
-│   │   ├── App.jsx
-│   │   └── main.jsx
+├── client/
+│   ├── public/
+│   ├── src/
 │   └── package.json
-│
-├── Server
-│   ├── controllers
-│   ├── models
-│   ├── routes
-│   ├── server.js
-│   └── package.json
-│
+├── Server/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── config/
+│   └── server.js
 └── README.md
 ```
 
 ---
 
-## 🚀 Installation
+## Local Setup
 
-### Clone the repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/Thilaksan8/time-slot-booking-app.git
-
 cd time-slot-booking-app
 ```
 
----
-
-### Backend Setup
+### 2. Backend Setup
 
 ```bash
 cd Server
-
 npm install
 ```
 
-Create a `.env` file inside the `Server` folder.
+Create a `.env` file in the `Server` folder using the example format below:
 
 ```env
-MONGO_URI=your_mongodb_connection_string
 PORT=5000
+MONGO_URI=your_mongodb_connection_string
 ```
 
 Run the backend:
@@ -107,86 +101,66 @@ Run the backend:
 npm start
 ```
 
-or
+Or for development:
 
 ```bash
 npm run dev
 ```
 
----
-
-### Frontend Setup
+### 3. Frontend Setup
 
 ```bash
-cd client
-
+cd ../client
 npm install
-
 npm run dev
 ```
 
 ---
 
-## 📷 Application Preview
-
-> Add screenshots here after deployment.
-
-Example:
-
-- Home Page
-- Booking Form
-- Booked Slots
-- Edit Booking
-- Delete Booking
-
----
-
-## 📡 API Endpoints
+## API Endpoints
 
 | Method | Endpoint | Description |
-|---------|----------|-------------|
+| --- | --- | --- |
 | GET | `/booking` | Retrieve all bookings |
-| POST | `/booking` | Create a booking |
-| PUT | `/booking/:id` | Update a booking |
+| POST | `/booking` | Create a new booking |
+| PUT | `/booking/:id` | Update an existing booking |
 | DELETE | `/booking/:id` | Delete a booking |
 
 ---
 
-## 🔒 Validation
+## Validation Rules
 
-The application prevents:
+The system ensures that:
 
-- Booking an already reserved time slot
-- Empty booking information
-- Invalid CRUD requests
-
----
-
-## 🔮 Future Improvements
-
-- 🌙 Dark / Light Mode
-- 🔐 User Authentication
-- 👤 User Accounts
-- 📧 Email Notifications
-- 📅 Calendar Integration
-- 🔍 Search and Filtering
-- 📊 Admin Dashboard
-- 📱 Improved Mobile Responsiveness
+- duplicate time slots cannot be booked
+- empty or invalid booking data is rejected
+- the user receives feedback for successful or failed operations
 
 ---
 
-## 👨‍💻 Author
+## Future Enhancements
 
-**Thilaksan Elango**
+- User authentication and role-based access
+- Admin dashboard
+- Search and filtering
+- Email notifications
+- Dark mode
+- Calendar integration
+- Responsive mobile improvements
+
+---
+
+## Author
+
+Thilaksan Elango
 
 Computer Science & Engineering Undergraduate  
 University of Moratuwa
 
-GitHub:
-https://github.com/Thilaksan8
+GitHub: https://github.com/Thilaksan8
 
 ---
 
-## 📄 License
+## License
 
-This project was developed for learning purposes and as part of the Rotaract Mora IT Team technical assignment.
+This project was developed for learning and technical assignment purposes.
