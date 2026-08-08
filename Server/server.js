@@ -1,26 +1,52 @@
-    require("dotenv").config();
+require("dotenv").config();
 
-    const express= require("express");
-    const cors=require('cors');
-    const connectDB = require("./config/db");
+const express = require("express");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const connectDB = require("./config/db");
 
-    const app = express();
+const app = express();
 
-    const bookingRoutes = require("./routes/bookingRoute");
+const authRoutes = require("./routes/authRoute");
+const bookingRoutes = require("./routes/bookingRoute");
+const adminRoutes = require("./routes/adminRoute");
 
-    connectDB();
+// Connect to MongoDB Database
+connectDB();
 
-    app.use(cors());
-    app.use(express.json());
-    app.use("/booking", bookingRoutes);
-    
-    const PORT= 5000;
- 
-    
-    app.get("/",(req,res)=>{
-        res.send("Server is running 🚀");
-    });
-    
-    app.listen(PORT,()=>{
-        console.log(`Server started on port ${PORT}`)
-    })
+// CORS configuration supporting credentials (cookies)
+const allowedOrigins = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    process.env.CLIENT_URL
+].filter(Boolean);
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin) || process.env.NODE_ENV !== "production") {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true
+}));
+
+app.use(express.json());
+app.use(cookieParser());
+
+// Routes
+app.use("/api/auth", authRoutes);
+app.use("/booking", bookingRoutes);
+app.use("/api/admin", adminRoutes);
+
+// Health check endpoint
+app.get("/", (req, res) => {
+    res.send("Server is running 🚀");
+});
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`);
+});

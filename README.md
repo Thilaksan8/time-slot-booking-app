@@ -35,19 +35,23 @@ The application is designed for appointment-based booking scenarios where users 
 ## Tech Stack
 
 ### Frontend
+
 - React
 - Vite
 - CSS
 
 ### Backend
+
 - Node.js
 - Express.js
 
 ### Database
+
 - MongoDB Atlas
 - Mongoose
 
 ### Deployment
+
 - Vercel for frontend
 - Render for backend
 
@@ -119,12 +123,12 @@ npm run dev
 
 ## API Endpoints
 
-| Method | Endpoint | Description |
-| --- | --- | --- |
-| GET | `/booking` | Retrieve all bookings |
-| POST | `/booking` | Create a new booking |
-| PUT | `/booking/:id` | Update an existing booking |
-| DELETE | `/booking/:id` | Delete a booking |
+| Method | Endpoint       | Description                |
+| ------ | -------------- | -------------------------- |
+| GET    | `/booking`     | Retrieve all bookings      |
+| POST   | `/booking`     | Create a new booking       |
+| PUT    | `/booking/:id` | Update an existing booking |
+| DELETE | `/booking/:id` | Delete a booking           |
 
 ---
 
